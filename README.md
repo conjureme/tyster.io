@@ -7,8 +7,8 @@ a very silly and unprofessional portfolio built with Next.js 15, Tailwind CSS, D
 - [Next.js](https://nextjs.org/) v15.3.1 with app router
 - [React](https://react.dev/) v19.0.0
 - [TailwindCSS](https://tailwindcss.com/) v4
-- [DaisyUI](https://daisyui.com/)v5.0.28
-- [Motion](https://motion.dev/)v12.9.2
+- [DaisyUI](https://daisyui.com/) v5.0.28
+- [Motion](https://motion.dev/) v12.9.2
 - TypeScript
 
 ## features
