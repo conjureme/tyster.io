@@ -1,4 +1,10 @@
+@import url('https://use.typekit.net/rgg0oon.css');
+
 @import 'tailwindcss';
 @plugin 'daisyui' {
   themes: light --default;
+}
+
+@theme {
+  --font-graphie: 'Graphie', sans-serif;
 }

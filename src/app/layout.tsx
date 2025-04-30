@@ -13,14 +13,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='h-full'>
-      <head>
-        <link
-          rel='preload'
-          href='https://use.typekit.net/rgg0oon.css'
-          as='style'
-        />
-        <link rel='stylesheet' href='https://use.typekit.net/rgg0oon.css' />
-      </head>
       <body className='min-h-screen h-full m-0 flex justify-center bg-white font-graphie'>
         <div className='h-full max-w-6xl'>{children}</div>
       </body>
