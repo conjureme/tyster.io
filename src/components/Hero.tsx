@@ -17,7 +17,7 @@ export default function Hero() {
           </p>
           <div className='bg-gray-100 border-l-4 border-gray-500 py-2 px-4 rounded'>
             <p className='text-gray-700 italic'>
-              "this will be a banger quote one day..."
+              &quot;this will be a banger quote one day...&quot;
             </p>
           </div>
         </div>

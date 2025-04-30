@@ -17,7 +17,7 @@ export default function Home() {
       <div className='flex flex-col items-center justify-center gap-8 mb-auto px-4 text-center'>
         <CircleArrowDown size={36} className='animate-bounce' />
         <span className='text-gray-700 text-3xl font-bold'>
-          this website is still in construction... check back soon!
+          this website is still under construction... check back soon!
         </span>
       </div>
     </div>

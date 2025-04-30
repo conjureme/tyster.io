@@ -4,22 +4,27 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+interface Position {
+  x: number;
+  y: number;
+}
+
 export default function PixelArtEyes() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [eyePositions, setEyePositions] = useState([
+  const [mousePosition, setMousePosition] = useState<Position>({ x: 0, y: 0 });
+  const [eyePositions, setEyePositions] = useState<Position[]>([
     { x: 0, y: 0 }, // left eye
     { x: 0, y: 0 }, // right eye
   ]);
 
   // socket positions
-  const leftEyeSocket = { x: 130, y: 75 };
-  const rightEyeSocket = { x: 167, y: 75 };
+  const leftEyeSocket: Position = { x: 130, y: 75 };
+  const rightEyeSocket: Position = { x: 167, y: 75 };
 
   // eye movement range (how far the pupil can move from center)
   const eyeMovementRange = 3;
 
   useEffect(() => {
-    const handleMouseMove = (e: any) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -31,7 +36,10 @@ export default function PixelArtEyes() {
 
   useEffect(() => {
     // eye positions based on mouse position
-    const calculateEyePosition = (socketX: any, socketY: any) => {
+    const calculateEyePosition = (
+      socketX: number,
+      socketY: number
+    ): Position => {
       // get element position
       const element = document.getElementById('character-container');
       if (!element) return { x: 0, y: 0 };
@@ -66,7 +74,13 @@ export default function PixelArtEyes() {
       calculateEyePosition(leftEyeSocket.x, leftEyeSocket.y),
       calculateEyePosition(rightEyeSocket.x, rightEyeSocket.y),
     ]);
-  }, [mousePosition]);
+  }, [
+    mousePosition,
+    leftEyeSocket.x,
+    leftEyeSocket.y,
+    rightEyeSocket.x,
+    rightEyeSocket.y,
+  ]);
 
   return (
     <div className='flex items-center justify-center h-full w-full'>
@@ -111,7 +125,7 @@ export default function PixelArtEyes() {
             alt='Right eye'
             fill
             style={{
-              transform: `translate(${eyePositions[0].x}px, ${eyePositions[0].y}px)`,
+              transform: `translate(${eyePositions[1].x}px, ${eyePositions[1].y}px)`,
             }}
           />
         </div>
