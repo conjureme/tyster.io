@@ -4,20 +4,20 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className='container mx-auto py-16 max-w-6xl'>
+    <div className='container mx-auto py-8 md:py-16 max-w-6xl'>
       <div className='flex justify-center px-4'>
-        <div className='w-full max-w-2xl border-4 border-primary rounded-3xl p-32 text-center shadow-lg shadow-neutral-600'>
-          <h1 className='text-5xl font-extrabold text-gray-600 mb-4'>
+        <div className='w-full max-w-2xl border-2 md:border-4 border-primary rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-32 text-center shadow-lg shadow-neutral-600'>
+          <h1 className='text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-600 mb-4'>
             hiya, i&apos;m <span className='gradient-flow'>tyler!</span>
           </h1>
 
-          <p className='text-xl text-gray-600 mb-6'>
+          <p className='text-lg md:text-xl text-gray-600 mb-6'>
             silly coder and beginner artist
           </p>
 
-          <div className='h-8'></div>
+          <div className='h-4 md:h-8'></div>
 
-          <div className='flex justify-center space-x-6'>
+          <div className='flex justify-center space-x-4 md:space-x-6'>
             <Link
               href='https://github.com/conjureme'
               className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
@@ -26,9 +26,9 @@ export default function Hero() {
             >
               <Icon
                 icon='mdi:github-box'
-                width={64}
-                height={64}
-                className='hover:scale-105 active:scale-90 duration-250'
+                width={48}
+                height={48}
+                className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
               />
             </Link>
             <Link
@@ -39,9 +39,9 @@ export default function Hero() {
             >
               <Icon
                 icon='mdi:twitter-box'
-                width={64}
-                height={64}
-                className='hover:scale-105 active:scale-90 duration-250'
+                width={48}
+                height={48}
+                className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
               />
             </Link>
             <Link
@@ -52,9 +52,9 @@ export default function Hero() {
             >
               <Icon
                 icon='mdi:steam-box'
-                width={64}
-                height={64}
-                className='hover:scale-105 active:scale-90 duration-250'
+                width={48}
+                height={48}
+                className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
               />
             </Link>
             <Link
@@ -65,9 +65,9 @@ export default function Hero() {
             >
               <Icon
                 icon='cbi:discord'
-                width={64}
-                height={64}
-                className='hover:scale-105 active:scale-90 duration-250'
+                width={48}
+                height={48}
+                className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
               />
             </Link>
           </div>

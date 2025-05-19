@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // scroll progress
   useEffect(() => {
@@ -22,140 +23,198 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeDrawer = () => setIsDrawerOpen(false);
+  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
   return (
-    <div className='fixed top-0 left-0 right-0 mx-auto z-50 flex justify-between items-center w-full py-4 glass'>
-      <div className='flex justify-between items-center w-full max-w-6xl mx-auto px-4 md:px-6'>
-        {/* left side - logo */}
-        <div className='flex items-center'>
-          <div className='flex items-center justify-center'>
-            <div className='relative w-12 h-10'>
-              <Link href='/'>
-                <Image
-                  src='/frieren-plush.png'
-                  alt='logo'
-                  fill
-                  style={{ objectFit: 'contain' }}
-                />
-              </Link>
+    <div>
+      {/* mobile drawer */}
+      {isDrawerOpen && (
+        <div className='fixed inset-0 z-60'>
+          {/* background overlay */}
+          <div
+            className='absolute inset-0 bg-black/20 backdrop-blur-sm'
+            onClick={closeDrawer}
+          ></div>
+
+          <div
+            className={`absolute right-0 top-0 h-full w-80 bg-white/95 backdrop-blur-lg shadow-2xl border-l border-gray-200 transform transition-transform duration-300 ease-out ${
+              isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
+          >
+            {/* header */}
+            <div className='flex items-center justify-between py-4 px-6 border-b border-gray-200'>
+              <div className='flex items-center gap-3'>
+                <span className='text-xl font-bold text-gray-800'>
+                  da navigator
+                </span>
+              </div>
+              <button
+                onClick={closeDrawer}
+                className='p-2 rounded-full hover:bg-gray-100 transition-colors'
+                aria-label='Close navigation menu'
+              >
+                <Icon icon='material-symbols:close' width={28} height={28} />
+              </button>
             </div>
+
+            {/* nav items */}
+            <nav className='py-4 px-6'>
+              <ul className='space-y-2'>
+                <li>
+                  <Link
+                    href='/'
+                    onClick={closeDrawer}
+                    className='flex items-center text-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200  py-3 group'
+                  >
+                    <span className='font-medium'>home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='/shop'
+                    onClick={closeDrawer}
+                    className='flex items-center text-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200  py-3 group'
+                  >
+                    <span className='font-medium'>shop</span>
+                  </Link>
+                </li>
+
+                <div className='border-t border-gray-200 my-4'></div>
+
+                <li>
+                  <div className='flex items-center text-lg text-gray-500  py-3'>
+                    <span className='font-medium'>tyster.io</span>
+                  </div>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
+      )}
 
-        {/* big screen nav */}
-        <div
-          className={`
-          relative hidden md:flex items-center justify-between
-          bg-white rounded-full
-          border border-gray-200 shadow-sm
-          transition-all duration-500 ease-in-out py-1
-          ${
-            isHovered
-              ? 'w-96 px-6 animate-navbar-expand'
-              : 'w-48 px-4 animate-navbar-collapse'
-          }
-        `}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* left icon */}
-          <div className='flex items-center justify-center text-gray-800'>
-            <Icon
-              icon='lineicons:pointer'
-              width={26}
-              height={26}
-              className='transition-all duration-500 text-gray-600'
-            />
+      {/* main navbar */}
+      <div className='fixed top-0 left-0 right-0 mx-auto z-50 flex justify-between items-center w-full py-4 glass'>
+        <div className='flex justify-between items-center w-full max-w-6xl mx-auto px-4 md:px-6'>
+          {/* left side - logo */}
+          <div className='flex items-center'>
+            <div className='flex items-center justify-center'>
+              <div className='relative w-12 h-10'>
+                <Link href='/'>
+                  <Image
+                    src='/frieren-plush.png'
+                    alt='logo'
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* center nav */}
+          {/* big screen nav */}
           <div
             className={`
-            absolute left-1/2 transform -translate-x-1/2
-            flex items-center space-x-6
-            transition-all duration-100
-            ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}
+            relative hidden md:flex items-center justify-between
+            bg-white rounded-full
+            border border-gray-200 shadow-sm
+            transition-all duration-500 ease-in-out py-1
+            ${
+              isHovered
+                ? 'w-96 px-6 animate-navbar-expand'
+                : 'w-48 px-4 animate-navbar-collapse'
+            }
           `}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <Link
-              href='/'
-              className='flex items-center space-x-1 px-1 py-2 text-gray-700 hover:text-gray-900 transition-colors'
-            >
-              <span className='text-md font-medium'>home</span>
-            </Link>
-            <Link
-              href='/'
-              className='flex items-center space-x-1 px-1 py-2 text-gray-700 hover:text-gray-900 transition-colors'
-            >
-              <span className='text-md font-medium'>shop</span>
-            </Link>
-          </div>
-
-          {/* right Icon */}
-          <div className='flex items-center justify-center text-gray-800'>
-            <div className='relative w-8 h-8'>
-              {/* background circle */}
-              <svg className='w-8 h-8' viewBox='0 0 32 32'>
-                <circle
-                  cx='16'
-                  cy='16'
-                  r='14'
-                  fill='none'
-                  stroke='#e5e7eb'
-                  strokeWidth='2'
-                />
-              </svg>
-
-              {/* progress circle */}
-              <svg
-                className='absolute top-0 left-0 w-8 h-8 -rotate-90 transition-all duration-300'
-                viewBox='0 0 32 32'
-              >
-                <circle
-                  cx='16'
-                  cy='16'
-                  r='14'
-                  fill='none'
-                  stroke='#4b5563'
-                  strokeWidth='2'
-                  strokeDasharray={`${2 * Math.PI * 14}`}
-                  strokeDashoffset={`${
-                    2 * Math.PI * 14 * (1 - scrollProgress)
-                  }`}
-                  strokeLinecap='round'
-                />
-              </svg>
+            {/* left icon */}
+            <div className='flex items-center justify-center text-gray-800'>
+              <Icon
+                icon='lineicons:pointer'
+                width={26}
+                height={26}
+                className='transition-all duration-500 text-gray-600'
+              />
             </div>
-          </div>
-        </div>
 
-        {/* small screen nav */}
-        <div className='navbar-end md:hidden'>
-          <div className='dropdown dropdown-end'>
+            {/* center nav */}
             <div
-              tabIndex={0}
-              role='button'
-              className='btn btn-ghost btn-circle'
+              className={`
+              absolute left-1/2 transform -translate-x-1/2
+              flex items-center space-x-6
+              transition-all duration-100
+              ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}
+            `}
             >
-              <Icon icon='mdi:menu' width={16} height={16} />
+              <Link
+                href='/'
+                className='flex items-center space-x-1 px-1 py-2 text-gray-700 hover:text-gray-900 transition-colors'
+              >
+                <span className='text-md font-medium'>home</span>
+              </Link>
+              <Link
+                href='/shop'
+                className='flex items-center space-x-1 px-1 py-2 text-gray-700 hover:text-gray-900 transition-colors'
+              >
+                <span className='text-md font-medium'>shop</span>
+              </Link>
             </div>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow'
-            >
-              <li>
-                <Link href='/'>home</Link>
-              </li>
-              <li>
-                <Link href='/'>shop</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
 
-        {/* right side text */}
-        <div className='hidden md:flex items-center space-x-4'>
-          <div className='flex items-center justify-center'>
-            <h1 className='font-bold text-gray-400 tracking-wider'>this</h1>
+            {/* right Icon */}
+            <div className='flex items-center justify-center text-gray-800'>
+              <div className='relative w-8 h-8'>
+                {/* background circle */}
+                <svg className='w-8 h-8' viewBox='0 0 32 32'>
+                  <circle
+                    cx='16'
+                    cy='16'
+                    r='14'
+                    fill='none'
+                    stroke='#e5e7eb'
+                    strokeWidth='2'
+                  />
+                </svg>
+
+                {/* progress circle */}
+                <svg
+                  className='absolute top-0 left-0 w-8 h-8 -rotate-90 transition-all duration-300'
+                  viewBox='0 0 32 32'
+                >
+                  <circle
+                    cx='16'
+                    cy='16'
+                    r='14'
+                    fill='none'
+                    stroke='#4b5563'
+                    strokeWidth='2'
+                    strokeDasharray={`${2 * Math.PI * 14}`}
+                    strokeDashoffset={`${
+                      2 * Math.PI * 14 * (1 - scrollProgress)
+                    }`}
+                    strokeLinecap='round'
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* small screen nav - mobile menu button */}
+          <div className='md:hidden'>
+            <button
+              onClick={toggleDrawer}
+              className='p-2 rounded-full hover:bg-gray-100/50 transition-colors duration-200'
+              aria-label='Open navigation menu'
+            >
+              <Icon icon='material-symbols:menu' width={28} height={28} />
+            </button>
+          </div>
+
+          {/* right side text */}
+          <div className='hidden md:flex items-center space-x-4'>
+            <div className='flex items-center justify-center'>
+              <h1 className='font-bold text-gray-400 tracking-wider'>this</h1>
+            </div>
           </div>
         </div>
       </div>
