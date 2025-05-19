@@ -4,7 +4,32 @@ import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import toast from 'react-hot-toast';
+
+import { Space_Grotesk } from 'next/font/google';
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
+
 export default function Navbar() {
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(
+        now.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true,
+        })
+      );
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [isHovered, setIsHovered] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -99,15 +124,22 @@ export default function Navbar() {
           {/* left side - logo */}
           <div className='flex items-center'>
             <div className='flex items-center justify-center'>
-              <div className='relative w-12 h-10'>
-                <Link href='/'>
-                  <Image
-                    src='/frieren-plush.png'
-                    alt='logo'
-                    fill
-                    style={{ objectFit: 'contain' }}
-                  />
-                </Link>
+              <div
+                className='relative w-12 h-10 hover:cursor-pointer hover:scale-300 duration-1000 active:scale-50'
+                onClick={() => {
+                  toast(() => (
+                    <span className={`${spaceGrotesk.className} font-semibold`}>
+                      {`yamete yo ! <(=w=)>`}
+                    </span>
+                  ));
+                }}
+              >
+                <Image
+                  src='/frieren-plush.png'
+                  alt='logo'
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
               </div>
             </div>
           </div>
@@ -199,6 +231,14 @@ export default function Navbar() {
             </div>
           </div>
 
+          <div className='md:hidden flex items-center space-x-4'>
+            <div className='flex items-center justify-center'>
+              <h1 className='font-bold text-gray-400 tracking-wider'>
+                {currentTime}
+              </h1>
+            </div>
+          </div>
+
           {/* small screen nav - mobile menu button */}
           <div className='md:hidden'>
             <button
@@ -213,7 +253,9 @@ export default function Navbar() {
           {/* right side text */}
           <div className='hidden md:flex items-center space-x-4'>
             <div className='flex items-center justify-center'>
-              <h1 className='font-bold text-gray-400 tracking-wider'>this</h1>
+              <h1 className='font-bold text-gray-400 tracking-wider'>
+                {currentTime}
+              </h1>
             </div>
           </div>
         </div>

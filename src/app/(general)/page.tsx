@@ -4,7 +4,14 @@ import Hero from '@/components/Hero';
 import { Icon } from '@iconify/react';
 
 export const metadata: Metadata = {
-  description: 'the home page of a silly website living in the silly world.',
+  openGraph: {
+    title: 'tyster.io',
+    siteName: 'tyster.io',
+    description: 'the silliest of all silly websites living in the silly world',
+    url: 'https://tyster.io/',
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function Home() {
