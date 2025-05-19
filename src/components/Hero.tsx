@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className='container mx-auto py-8 md:py-16 max-w-6xl'>
+    <div className='container mx-auto py-8 md:py-16 max-w-6xl overflow-x-hidden'>
       <div className='flex justify-center px-4'>
         <div className='w-full max-w-2xl border-2 md:border-4 border-primary rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-32 text-center shadow-lg shadow-neutral-600'>
           <h1 className='text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-600 mb-4'>
