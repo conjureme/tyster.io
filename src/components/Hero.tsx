@@ -1,31 +1,75 @@
 'use client';
-import PixelArtEyes from './Eyes';
+import { Icon } from '@iconify/react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
     <div className='container mx-auto py-16 max-w-6xl'>
-      <div className='flex flex-col md:flex-row items-center justify-between  px-4 md:px-6'>
-        {/* left */}
-        <div className='md:w-1/2 mb-10 md:mb-0 md:pr-10'>
-          <h1 className='text-4xl font-bold text-gray-900 mb-4'>
-            hiya, my name is tyler!
+      <div className='flex justify-center px-4'>
+        <div className='w-full max-w-2xl border-4 border-primary rounded-3xl p-32 text-center shadow-lg shadow-neutral-600'>
+          <h1 className='text-5xl font-extrabold text-gray-600 mb-4'>
+            hiya, i&apos;m <span className='gradient-flow'>tyler!</span>
           </h1>
-          <p className='text-gray-700 text-lg mb-8'>
-            this will be a totally awesome biography about myself where i tell
-            you what i am and what i offer. unfortunately, i am not that great
-            at writing about myself yet, so this will have to do!
-          </p>
-          <div className='bg-gray-100 border-l-4 border-gray-500 py-2 px-4 rounded'>
-            <p className='text-gray-700 italic'>
-              &quot;this will be a banger quote one day...&quot;
-            </p>
-          </div>
-        </div>
 
-        {/* right */}
-        <div className='md:w-1/2 flex justify-end'>
-          <div className='relative w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-lg'>
-            <PixelArtEyes />
+          <p className='text-xl text-gray-600 mb-6'>
+            silly coder and beginner artist
+          </p>
+
+          <div className='h-8'></div>
+
+          <div className='flex justify-center space-x-6'>
+            <Link
+              href='https://github.com/conjureme'
+              className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
+              data-tip='terrible coding practices ahead'
+              target='_blank'
+            >
+              <Icon
+                icon='mdi:github-box'
+                width={64}
+                height={64}
+                className='hover:scale-105 active:scale-90 duration-250'
+              />
+            </Link>
+            <Link
+              href='https://x.com/caniacsauce'
+              className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
+              data-tip='the website formerly known as twitter'
+              target='_blank'
+            >
+              <Icon
+                icon='mdi:twitter-box'
+                width={64}
+                height={64}
+                className='hover:scale-105 active:scale-90 duration-250'
+              />
+            </Link>
+            <Link
+              href='https://steamcommunity.com/id/tyster1/'
+              className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
+              data-tip={`don't check my skyrim hours`}
+              target='_blank'
+            >
+              <Icon
+                icon='mdi:steam-box'
+                width={64}
+                height={64}
+                className='hover:scale-105 active:scale-90 duration-250'
+              />
+            </Link>
+            <Link
+              href='https://discord.gg/rn9j69ApJQ'
+              className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
+              data-tip='there was no box icon for this :('
+              target='_blank'
+            >
+              <Icon
+                icon='cbi:discord'
+                width={64}
+                height={64}
+                className='hover:scale-105 active:scale-90 duration-250'
+              />
+            </Link>
           </div>
         </div>
       </div>

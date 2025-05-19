@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { MousePointer2, Menu } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -59,7 +59,12 @@ export default function Navbar() {
         >
           {/* left icon */}
           <div className='flex items-center justify-center text-gray-800'>
-            <MousePointer2 size={32} className='transition-all duration-500' />
+            <Icon
+              icon='lineicons:pointer'
+              width={26}
+              height={26}
+              className='transition-all duration-500 text-gray-600'
+            />
           </div>
 
           {/* center nav */}
@@ -131,7 +136,7 @@ export default function Navbar() {
               role='button'
               className='btn btn-ghost btn-circle'
             >
-              <Menu />
+              <Icon icon='mdi:menu' width={16} height={16} />
             </div>
             <ul
               tabIndex={0}
