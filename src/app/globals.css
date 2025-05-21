@@ -36,3 +36,59 @@
   -webkit-text-fill-color: transparent;
   animation: gradient-flow 4s ease infinite;
 }
+
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  padding: 4px;
+  background: linear-gradient(
+    -45deg,
+    #6c5ce7,
+    #a855f7,
+    #ec4899,
+    #3b82f6,
+    #06b6d4
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 4s ease infinite;
+}
+
+.gradient-outline {
+  position: relative;
+  z-index: 0;
+}
+
+.gradient-outline::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    -45deg,
+    #6c5ce7,
+    #a855f7,
+    #ec4899,
+    #3b82f6,
+    #06b6d4
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 4s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.gradient-fill {
+  background: linear-gradient(
+    -45deg,
+    #6c5ce7,
+    #a855f7,
+    #ec4899,
+    #3b82f6,
+    #06b6d4
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 4s ease infinite;
+}

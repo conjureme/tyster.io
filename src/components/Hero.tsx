@@ -6,13 +6,13 @@ export default function Hero() {
   return (
     <div className='container mx-auto py-8 md:py-16 max-w-6xl overflow-x-hidden'>
       <div className='flex justify-center px-4'>
-        <div className='w-full max-w-2xl border-2 md:border-4 border-primary rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-32 text-center shadow-lg shadow-neutral-600'>
+        <div className='w-full max-w-2xl rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-32 text-center shadow-lg shadow-neutral-600 gradient-outline'>
           <h1 className='text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-600 mb-4'>
             hiya, i&apos;m <span className='gradient-flow'>tyler!</span>
           </h1>
 
           <p className='text-lg md:text-xl text-gray-600 mb-6'>
-            silly coder and beginner artist
+            wannabe coder and pretender artist
           </p>
 
           <div className='h-4 md:h-8'></div>
