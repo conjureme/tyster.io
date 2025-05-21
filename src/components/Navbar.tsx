@@ -136,9 +136,10 @@ export default function Navbar() {
               >
                 <Image
                   src='/frieren-plush.png'
-                  alt='logo'
+                  alt='frieren plush logo'
                   fill
                   style={{ objectFit: 'contain' }}
+                  priority
                 />
               </div>
             </div>

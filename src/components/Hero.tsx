@@ -23,12 +23,14 @@ export default function Hero() {
               className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
               data-tip='terrible coding practices ahead'
               target='_blank'
+              aria-label='visit my github profile'
             >
               <Icon
                 icon='mdi:github-box'
                 width={48}
                 height={48}
                 className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
+                aria-hidden='true'
               />
             </Link>
             <Link
@@ -36,12 +38,14 @@ export default function Hero() {
               className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
               data-tip='the website formerly known as twitter'
               target='_blank'
+              aria-label='perhaps give me a twitter follow'
             >
               <Icon
                 icon='mdi:twitter-box'
                 width={48}
                 height={48}
                 className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
+                aria-hidden='true'
               />
             </Link>
             <Link
@@ -49,12 +53,14 @@ export default function Hero() {
               className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
               data-tip={`don't check my skyrim hours`}
               target='_blank'
+              aria-label='view my steam profile'
             >
               <Icon
                 icon='mdi:steam-box'
                 width={48}
                 height={48}
                 className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
+                aria-hidden='true'
               />
             </Link>
             <Link
@@ -62,12 +68,14 @@ export default function Hero() {
               className='text-gray-600 hover:text-primary transition-colors duration-200 tooltip'
               data-tip='there was no box icon for this :('
               target='_blank'
+              aria-label='join my discord server and use silly emotes'
             >
               <Icon
                 icon='cbi:discord'
                 width={48}
                 height={48}
                 className='md:w-16 md:h-16 hover:scale-105 active:scale-90 duration-250'
+                aria-hidden='true'
               />
             </Link>
           </div>

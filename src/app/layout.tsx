@@ -3,18 +3,42 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'tyster.io',
-  description: 'a silly website living in a silly world.',
+  description: "tyler's very unprofessional and silly personal website.",
+  keywords: [
+    'tyster',
+    'tyler',
+    'silly',
+    'unprofessional portfolio',
+    'emoji downloader',
+    'wannabe coder',
+  ],
   openGraph: {
     title: 'tyster.io',
     siteName: 'tyster.io',
-    description: 'the silliest of all silly websites living in the silly world',
+    description:
+      'personal website of tyster- an out of touch coder and art enthusiast, filled with his projects and ugly art',
     url: 'https://tyster.io/',
     locale: 'en_US',
     type: 'website',
-    images: ['https://tyster.io/opengraph-image.png'],
+    images: [
+      {
+        url: 'https://tyster.io/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: "tyster.io - tyler's personal website",
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    creator: '@caniacsauce',
+    title: "tyster.io - tyler's personal website",
+    description:
+      'personal website of tyster- an out of touch coder and art enthusiast, filled with his projects and ugly art',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
