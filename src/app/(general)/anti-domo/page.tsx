@@ -140,6 +140,23 @@ export default function AntiDomo() {
           </Link>
         </div>
 
+        <div className='text-center mt-8'>
+          <div className='flex flex-col sm:flex-row justify-center items-center gap-4 mb-4'>
+            <Link
+              href='/anti-domo/privacy-policy'
+              className='text-gray-600 hover:text-gray-800 underline text-sm'
+            >
+              privacy policy
+            </Link>
+            <Link
+              href='/anti-domo/terms-of-service'
+              className='text-gray-600 hover:text-gray-800 underline text-sm'
+            >
+              terms of service
+            </Link>
+          </div>
+        </div>
+
         {/* footer note */}
         <div className='text-center mt-12'>
           <p className='text-gray-500 text-sm'>
