@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 export default function Home() {
   return (
     <div className='min-h-screen'>
-      <div className='max-w-6xl mx-auto border-2 border-red-200'>
+      <div className='max-w-6xl mx-auto'>
         <div className='min-h-screen flex flex-col items-center justify-center px-4'>
           <Hero />
 
