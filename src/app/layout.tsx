@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full'>
       <body className='min-h-screen h-full m-0 flex justify-center bg-white font-graphie'>
-        <div className='h-full max-w-6xl'>{children}</div>
+        <div className='h-full w-full'>{children}</div>
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div className='container mx-auto py-8 md:py-16 max-w-6xl overflow-x-hidden'>
       <div className='flex justify-center px-4'>
-        <div className='w-full max-w-2xl rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-32 text-center shadow-lg shadow-neutral-600 gradient-outline'>
+        <div className='w-full max-w-3xl rounded-2xl md:rounded-3xl p-8 md:p-16 lg:p-32 text-center shadow-lg shadow-neutral-600 gradient-outline'>
           <h1 className='text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-600 mb-4'>
             hiya, i&apos;m <span className='gradient-flow'>tyler!</span>
           </h1>

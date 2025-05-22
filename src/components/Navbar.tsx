@@ -120,7 +120,7 @@ export default function Navbar() {
 
       {/* main navbar */}
       <div className='fixed top-0 left-0 right-0 mx-auto z-50 flex justify-between items-center w-full py-4 glass'>
-        <div className='flex justify-between items-center w-full max-w-6xl mx-auto px-4 md:px-6'>
+        <div className='flex justify-between items-center w-full max-w-6xl mx-auto px-4 md:px-0'>
           {/* left side - logo */}
           <div className='flex items-center'>
             <div className='flex items-center justify-center'>
