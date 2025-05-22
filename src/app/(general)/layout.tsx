@@ -3,8 +3,6 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-import LenisProvider from '@/components/LenisProvider';
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -15,11 +13,9 @@ export default function RootLayout({
       <main className='h-full'>
         <Toaster position='top-center' />
         <div>
-          <LenisProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </LenisProvider>
+          <Navbar />
+          {children}
+          <Footer />
         </div>
       </main>
     </div>
