@@ -1,6 +1,8 @@
 import Hero from '@/components/Hero';
 import { Icon } from '@iconify/react';
 
+import Showcase from '@/components/Showcase';
+
 export default function Home() {
   return (
     <div className='min-h-screen'>
@@ -15,11 +17,9 @@ export default function Home() {
               height={36}
               className='animate-bounce text-gray-600'
             />
-            <span className='text-gray-600 text-3xl font-bold'>
-              this website is still under construction... check back soon!
-            </span>
           </div>
         </div>
+        <Showcase />
       </div>
     </div>
   );

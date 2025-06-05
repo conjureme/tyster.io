@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+import { Montserrat } from 'next/font/google';
+
 export const metadata: Metadata = {
   title: 'tyster.io',
   description: "tyler's very unprofessional and silly personal website.",
@@ -42,6 +44,10 @@ export const metadata: Metadata = {
   },
 };
 
+const montserrat = Montserrat({
+  subsets: ['latin'],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,7 +55,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='h-full'>
-      <body className='min-h-screen h-full m-0 flex justify-center bg-white font-graphie'>
+      <body
+        className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className}`}
+      >
         <div className='h-full w-full'>{children}</div>
       </body>
     </html>
