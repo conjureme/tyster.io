@@ -12,9 +12,10 @@ export default function Hero() {
   const titles = [
     'wannabe coder',
     'pretender artist',
-    'professional procrastinator',
     '#1 frieren and vinland saga fan',
-    'big bee fan',
+    'hi im nice',
+    'bee enjoyer',
+    'skyrim enthusiast',
   ];
 
   useEffect(() => {
