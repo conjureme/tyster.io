@@ -1,5 +1,34 @@
+'use client';
+
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+const parentAnim = {
+  initial: {
+    x: 0,
+  },
+  hover: {
+    x: 2,
+    transition: {
+      type: 'spring',
+      stiffness: 400,
+      damping: 25,
+    },
+  },
+};
+
+const linkIconAnim = {
+  initial: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.2,
+    transition: {
+      duration: 0.1,
+    },
+  },
+};
 
 export default function Home() {
   return (
@@ -21,13 +50,23 @@ export default function Home() {
               <section>
                 <h2 className='text-lg text-base-content mb-4'>projects</h2>
                 <div className='space-y-2 text-sm'>
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>◇</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ◇
+                    </motion.span>
                     <div>
                       <Link
                         href='https://github.com/conjureme/tyster.io'
                         target='_blank'
-                        className='text-base-content hover:text-primary transition-colors underline'
+                        className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                       >
                         tyster.io
                       </Link>
@@ -35,15 +74,25 @@ export default function Home() {
                         — this website
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>◇</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ◇
+                    </motion.span>
                     <div>
                       <Link
                         href='https://github.com/conjureme/moemoe'
                         target='_blank'
-                        className='text-base-content hover:text-primary transition-colors underline'
+                        className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                       >
                         moemoe
                       </Link>
@@ -53,14 +102,24 @@ export default function Home() {
                         with discord.js
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>◇</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ◇
+                    </motion.span>
                     <div>
                       <Link
                         href='/anti-domo'
-                        className='text-base-content hover:text-primary transition-colors underline'
+                        className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                       >
                         anti-domo
                       </Link>
@@ -69,15 +128,25 @@ export default function Home() {
                         uses the domoAI application. that&apos;s literally it.
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>◇</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ◇
+                    </motion.span>
                     <div>
                       <Link
                         href='https://github.com/conjureme/next-blog'
                         target='_blank'
-                        className='text-base-content hover:text-primary transition-colors underline'
+                        className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                       >
                         next-blog
                       </Link>
@@ -86,87 +155,158 @@ export default function Home() {
                         and supabase
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>◇</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ◇
+                    </motion.span>
                     <div>
                       <span className='text-base-content/50'>
                         and many more to come!
                       </span>
                       <span className='text-base-content/70 ml-1'></span>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </section>
 
               <section>
                 <h2 className='text-lg text-base-content mb-4'>links</h2>
                 <div className='space-y-2 text-sm'>
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>☆</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ☆
+                    </motion.span>
                     <Link
                       href='https://github.com/conjureme'
                       target='_blank'
-                      className='text-base-content hover:text-primary transition-colors underline'
+                      className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                     >
                       github
                     </Link>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>☆</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ☆
+                    </motion.span>
                     <Link
                       href='https://x.com/caniacsauce'
                       target='_blank'
-                      className='text-base-content hover:text-primary transition-colors underline'
+                      className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                     >
                       twitter
                     </Link>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>☆</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ☆
+                    </motion.span>
                     <Link
                       href='https://discord.gg/rn9j69ApJQ'
                       target='_blank'
-                      className='text-base-content hover:text-primary transition-colors underline'
+                      className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                     >
                       discord server
                     </Link>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>☆</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ☆
+                    </motion.span>
                     <Link
                       href='https://steamcommunity.com/id/tyster1/'
                       target='_blank'
-                      className='text-base-content hover:text-primary transition-colors underline'
+                      className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                     >
                       steam profile
                     </Link>
-                  </div>
+                  </motion.div>
 
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>☆</span>
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ☆
+                    </motion.span>
                     <Link
                       href='https://www.youtube.com/@tyster_'
                       target='_blank'
-                      className='text-base-content hover:text-primary transition-colors underline'
+                      className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                     >
                       youtube
                     </Link>
-                  </div>
-                  <div className='flex items-start gap-2'>
-                    <span className='text-primary'>☆</span>
+                  </motion.div>
+
+                  <motion.div
+                    className='flex items-start gap-2 group'
+                    whileHover='hover'
+                    variants={parentAnim}
+                    initial='initial'
+                  >
+                    <motion.span
+                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
+                      variants={linkIconAnim}
+                    >
+                      ☆
+                    </motion.span>
                     <Link
                       href='https://twitch.tv/tyster6'
                       target='_blank'
-                      className='text-base-content hover:text-primary transition-colors underline'
+                      className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                     >
                       twitch
                     </Link>
-                  </div>
+                  </motion.div>
                 </div>
               </section>
             </div>
