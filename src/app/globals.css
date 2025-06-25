@@ -51,3 +51,7 @@
 .font-workSans {
   font-family: var(--font-workSans);
 }
+
+.font-spaceGrotesk {
+  font-family: var(--font-spaceGrotesk);
+}

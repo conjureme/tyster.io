@@ -127,7 +127,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link
-                    href='/shop'
+                    href='#'
                     onClick={closeDrawer}
                     className={`flex items-center text-lg hover:bg-base-200 rounded-lg transition-all duration-200 py-3 px-2 ${
                       isActiveLink('/shop')
@@ -140,7 +140,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link
-                    href='/commissions'
+                    href='#'
                     onClick={closeDrawer}
                     className={`flex items-center text-lg hover:bg-base-200 rounded-lg transition-all duration-200 py-3 px-2 ${
                       isActiveLink('/commissions')
@@ -153,7 +153,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link
-                    href='/about'
+                    href='#'
                     onClick={closeDrawer}
                     className={`flex items-center text-lg hover:bg-base-200 rounded-lg transition-all duration-200 py-3 px-2 ${
                       isActiveLink('/about')
@@ -199,7 +199,7 @@ export default function Navbar() {
               home
             </Link>
             <Link
-              href='/shop'
+              href='#'
               className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
                 isActiveLink('/shop')
                   ? 'text-primary bg-base-200'
@@ -209,7 +209,7 @@ export default function Navbar() {
               shop
             </Link>
             <Link
-              href='/commissions'
+              href='#'
               className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
                 isActiveLink('/commissions')
                   ? 'text-primary bg-base-200'
@@ -219,7 +219,7 @@ export default function Navbar() {
               commissions
             </Link>
             <Link
-              href='/about'
+              href='#'
               className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
                 isActiveLink('/about')
                   ? 'text-primary bg-base-200'

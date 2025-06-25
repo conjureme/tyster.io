@@ -46,7 +46,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href='/shop'
+                  href='#'
                   className={`text-sm transition-colors duration-200 ${
                     isActiveLink('/shop')
                       ? 'text-neutral-content'
@@ -58,7 +58,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href='/commissions'
+                  href='#'
                   className={`text-sm transition-colors duration-200 ${
                     isActiveLink('/commissions')
                       ? 'text-neutral-content'
@@ -70,7 +70,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href='/about'
+                  href='#'
                   className={`text-sm transition-colors duration-200 ${
                     isActiveLink('/about')
                       ? 'text-neutral-content'

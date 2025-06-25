@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-import { Montserrat, Work_Sans } from 'next/font/google';
+import { Montserrat, Work_Sans, Space_Grotesk } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: 'home - tyster.io',
@@ -53,6 +53,11 @@ const workSans = Work_Sans({
   variable: '--font-workSans',
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-spaceGrotesk',
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full'>
       <body
-        className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className} ${workSans.variable}`}
+        className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className} ${workSans.variable} ${spaceGrotesk.variable}`}
       >
         <div className='h-full w-full'>{children}</div>
       </body>
