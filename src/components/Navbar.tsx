@@ -1,74 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Icon } from '@iconify/react';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
-  const [currentTime, setCurrentTime] = useState('');
-  const [currentDate, setCurrentDate] = useState('');
-  const [showMyTimezone, setShowMyTimezone] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timezone = showMyTimezone ? 'America/Chicago' : undefined;
-
-      const dateOptions: Intl.DateTimeFormatOptions = {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: timezone,
-      };
-
-      const formattedDate = now.toLocaleDateString('en-US', dateOptions);
-      const dateParts = formattedDate.split(' ');
-      const month = dateParts[0];
-      const day = dateParts[1].replace(',', '');
-      const year = dateParts[2];
-
-      const dayNum = parseInt(day);
-      let suffix = 'th';
-      if (dayNum % 10 === 1 && dayNum !== 11) suffix = 'st';
-      else if (dayNum % 10 === 2 && dayNum !== 12) suffix = 'nd';
-      else if (dayNum % 10 === 3 && dayNum !== 13) suffix = 'rd';
-
-      let timezoneAbbr;
-      if (showMyTimezone) {
-        timezoneAbbr = 'CDT'; // my timezone
-      } else {
-        const timeString = now.toLocaleTimeString('en-US', {
-          timeZoneName: 'short',
-        });
-        timezoneAbbr = timeString.split(' ').pop() || 'Local';
-      }
-
-      setCurrentDate(`${month} ${day}${suffix}, ${year} (${timezoneAbbr})`);
-
-      const timeOptions: Intl.DateTimeFormatOptions = {
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-        timeZone: timezone,
-      };
-
-      setCurrentTime(now.toLocaleTimeString('en-US', timeOptions));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-
-    return () => clearInterval(interval);
-  }, [showMyTimezone]);
-
   const closeDrawer = () => setIsDrawerOpen(false);
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
-  const toggleTimezone = () => setShowMyTimezone(!showMyTimezone);
 
   const isActiveLink = (href: string) => {
     if (href === '/') {
@@ -82,7 +24,6 @@ export default function Navbar() {
       {/* mobile drawer */}
       {isDrawerOpen && (
         <div className='fixed inset-0 z-60'>
-          {/* background overlay */}
           <div
             className='absolute inset-0 bg-black/20 backdrop-blur-sm'
             onClick={closeDrawer}
@@ -93,7 +34,6 @@ export default function Navbar() {
               isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
-            {/* header */}
             <div className='flex items-center justify-between py-4 px-6 border-b border-base-300'>
               <div className='flex items-center gap-3'>
                 <span className='text-xl font-bold text-base-content'>
@@ -109,7 +49,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* nav items */}
             <nav className='py-4 px-6'>
               <ul className='space-y-2'>
                 <li>
@@ -164,8 +103,6 @@ export default function Navbar() {
                     <span>about</span>
                   </Link>
                 </li>
-
-                <div className='border-t border-base-300 my-4'></div>
               </ul>
             </nav>
           </div>
@@ -173,10 +110,10 @@ export default function Navbar() {
       )}
 
       {/* main navbar */}
-      <div className='fixed top-0 left-0 right-0 mx-auto z-50 flex justify-between items-center w-full py-4 bg-base-100 glass'>
+      <div className='fixed top-0 left-0 right-0 mx-auto z-50 flex justify-between items-center w-full py-6 bg-base-100 glass'>
         <div className='flex justify-between items-center w-full max-w-6xl mx-auto px-4 md:px-0'>
-          {/* left side - logo */}
-          <div className='flex items-center w-48 justify-start'>
+          {/* logo */}
+          <div className='flex items-center'>
             <Link href='/' className='flex items-center justify-center'>
               <div className='w-10 h-10 bg-primary rounded-lg flex items-center justify-center'>
                 <span className='text-primary-content font-bold text-lg'>
@@ -186,63 +123,76 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* center nav - desktop only */}
-          <div className='hidden md:flex items-center space-x-8 flex-1 justify-center'>
+          {/* desktop nav links */}
+          <div className='hidden md:flex items-center space-x-8'>
             <Link
               href='/'
-              className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
+              className={`relative py-2 transition-colors duration-200 font-medium group ${
                 isActiveLink('/')
-                  ? 'text-primary bg-base-200'
-                  : 'text-base-content hover:text-primary hover:bg-base-200'
+                  ? 'text-primary'
+                  : 'text-base-content hover:text-primary'
               }`}
             >
               home
+              <span
+                className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform duration-200 ${
+                  isActiveLink('/')
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              ></span>
             </Link>
             <Link
               href='#'
-              className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
+              className={`relative py-2 transition-colors duration-200 font-medium group ${
                 isActiveLink('/shop')
-                  ? 'text-primary bg-base-200'
-                  : 'text-base-content hover:text-primary hover:bg-base-200'
+                  ? 'text-primary'
+                  : 'text-base-content hover:text-primary'
               }`}
             >
               shop
+              <span
+                className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform duration-200 ${
+                  isActiveLink('/shop')
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              ></span>
             </Link>
             <Link
               href='#'
-              className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
+              className={`relative py-2 transition-colors duration-200 font-medium group ${
                 isActiveLink('/commissions')
-                  ? 'text-primary bg-base-200'
-                  : 'text-base-content hover:text-primary hover:bg-base-200'
+                  ? 'text-primary'
+                  : 'text-base-content hover:text-primary'
               }`}
             >
               commissions
+              <span
+                className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform duration-200 ${
+                  isActiveLink('/commissions')
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              ></span>
             </Link>
             <Link
               href='#'
-              className={`px-3 py-2 rounded-lg transition-all duration-200 font-medium ${
+              className={`relative py-2 transition-colors duration-200 font-medium group ${
                 isActiveLink('/about')
-                  ? 'text-primary bg-base-200'
-                  : 'text-base-content hover:text-primary hover:bg-base-200'
+                  ? 'text-primary'
+                  : 'text-base-content hover:text-primary'
               }`}
             >
               about
+              <span
+                className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform duration-200 ${
+                  isActiveLink('/about')
+                    ? 'scale-x-100'
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              ></span>
             </Link>
-          </div>
-
-          {/* right side - time display */}
-          <div className='flex items-center w-48 justify-end'>
-            <button
-              onClick={toggleTimezone}
-              className='text-right hover:bg-base-200 rounded-lg px-3 py-2 transition-colors duration-200'
-            >
-              <div className='text-sm font-medium text-base-content hidden md:block'>
-                {currentDate}
-              </div>
-              <div className='text-lg font-mono text-primary'>
-                {currentTime}
-              </div>
-            </button>
           </div>
 
           {/* mobile menu button */}
