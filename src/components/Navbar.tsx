@@ -5,6 +5,8 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Image from 'next/image';
+
 export default function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const pathname = usePathname();
@@ -115,10 +117,13 @@ export default function Navbar() {
           {/* logo */}
           <div className='flex items-center'>
             <Link href='/' className='flex items-center justify-center'>
-              <div className='w-10 h-10 bg-primary rounded-lg flex items-center justify-center'>
-                <span className='text-primary-content font-bold text-lg'>
-                  T
-                </span>
+              <div className='w-10 h-10 rounded-lg flex items-center justify-center'>
+                <Image
+                  src='/tyster-triangle-dark.png'
+                  width={90}
+                  height={90}
+                  alt='tyster.io pyramid dark logo'
+                />
               </div>
             </Link>
           </div>

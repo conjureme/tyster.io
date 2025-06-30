@@ -4,6 +4,8 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Image from 'next/image';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
@@ -23,8 +25,13 @@ export default function Footer() {
             <div className='w-10 h-10 bg-primary rounded-lg flex items-center justify-center'>
               {/* placeholder logo */}
               <Link href='/' className='flex items-center justify-center'>
-                <div className='w-10 h-10 bg-base-100 rounded-lg flex items-center justify-center'>
-                  <span className='text-primary font-bold text-lg'>T</span>
+                <div className='w-10 h-10 rounded-lg flex items-center justify-center'>
+                  <Image
+                    src='/tyster-triangle-light.png'
+                    width={90}
+                    height={90}
+                    alt='tyster.io pyramid logo light'
+                  />
                 </div>
               </Link>
             </div>

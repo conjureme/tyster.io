@@ -33,7 +33,7 @@ const linkIconAnim = {
 export default function Home() {
   return (
     <div className='min-h-screen flex flex-col bg-base-100'>
-      <div className='flex-1 pt-24 p-6 md:p-0 md:flex md:items-center mx-auto max-w-6xl'>
+      <div className='flex-1 pt-28 p-6 md:p-0 md:flex md:items-center mx-auto max-w-6xl'>
         <div className='max-w-6xl'>
           <div className='space-y-8'>
             <section>
