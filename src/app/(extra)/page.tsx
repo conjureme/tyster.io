@@ -2,7 +2,11 @@
 
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
+import Image from 'next/image';
 
 const parentAnim = {
   initial: {
@@ -31,10 +35,76 @@ const linkIconAnim = {
 };
 
 export default function Home() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 300 };
+  const diamondY = useSpring(mouseY, springConfig);
+  const diamondX = useSpring(mouseX, { damping: 20, stiffness: 200 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!contentRef.current || !isHovering) return;
+
+      const rect = contentRef.current.getBoundingClientRect();
+      const y = e.clientY - rect.top;
+      const centerY = rect.height / 2;
+      const relativeY = y - centerY;
+
+      // apply resistance/damping to all movement
+      const dampingFactor = 0.4; // overall resistance % of mouse
+      const clampedY = relativeY * dampingFactor;
+
+      mouseY.set(clampedY);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isHovering, mouseY]);
+
+  useEffect(() => {
+    if (!isHovering) {
+      mouseY.set(0);
+      mouseX.set(0);
+    } else {
+      mouseX.set(-50);
+    }
+  }, [isHovering, mouseY, mouseX]);
+
   return (
     <div className='min-h-screen flex flex-col bg-base-100'>
       <div className='flex-1 pt-28 p-6 md:p-0 md:flex md:items-center mx-auto max-w-6xl'>
-        <div className='max-w-6xl'>
+        <div
+          ref={contentRef}
+          className='max-w-6xl relative'
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          {/* floating icon tracker- desktop only */}
+          <motion.div
+            className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none'
+            style={{ y: diamondY, x: diamondX }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: isHovering ? 1 : 0.3,
+              scale: isHovering ? 1 : 0.8,
+            }}
+            transition={{
+              opacity: { duration: 0.3 },
+              scale: { type: 'spring', stiffness: 400, damping: 25 },
+            }}
+          >
+            <Image
+              src='/diamond-icon-dark-export.svg'
+              alt=''
+              width={11}
+              height={11}
+              className='w-5 h-5'
+            />
+          </motion.div>
+
           <div className='space-y-8'>
             <section>
               <h1 className='text-2xl font-bold font-workSans text-base-content mb-3'>
