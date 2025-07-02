@@ -37,12 +37,26 @@ const linkIconAnim = {
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
+  const [hoveredText, setHoveredText] = useState('');
   const mouseY = useMotionValue(0);
   const mouseX = useMotionValue(0);
 
   const springConfig = { damping: 25, stiffness: 300 };
   const diamondY = useSpring(mouseY, springConfig);
   const diamondX = useSpring(mouseX, { damping: 20, stiffness: 200 });
+
+  const hoverTextMap: { [key: string]: string } = {
+    github: 'clone away friend!',
+    twitter: 'lots of frieren reposting',
+    discord: 'join us!',
+    steam: 'i love achievements',
+    youtube: 'incredible editing ahead',
+    twitch: 'i stream games!',
+    'tyster.io': 'thank you for visiting!',
+    moemoe: 'the silliest discord bot',
+    'anti-domo': 'no domos allowed',
+    'next-blog': 'this was a triumph',
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -73,6 +87,15 @@ export default function Home() {
     }
   }, [isHovering, mouseY, mouseX]);
 
+  const handleLinkHover = (text: string) => {
+    const displayText = hoverTextMap[text.toLowerCase()] || text;
+    setHoveredText(displayText);
+  };
+
+  const handleLinkLeave = () => {
+    setHoveredText('');
+  };
+
   return (
     <div className='min-h-screen flex flex-col bg-base-100'>
       <div className='flex-1 pt-28 p-6 md:p-0 md:flex md:items-center mx-auto max-w-6xl'>
@@ -84,25 +107,47 @@ export default function Home() {
         >
           {/* floating icon tracker- desktop only */}
           <motion.div
-            className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none'
+            className='hidden md:flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none'
             style={{ y: diamondY, x: diamondX }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: isHovering ? 1 : 0.3,
-              scale: isHovering ? 1 : 0.8,
-            }}
-            transition={{
-              opacity: { duration: 0.3 },
-              scale: { type: 'spring', stiffness: 400, damping: 25 },
-            }}
           >
-            <Image
-              src='/diamond-icon-dark-export.svg'
-              alt=''
-              width={11}
-              height={11}
-              className='w-5 h-5'
-            />
+            {/* text box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, x: 10 }}
+              animate={{
+                opacity: hoveredText ? 1 : 0,
+                scale: hoveredText ? 1 : 0.8,
+                x: hoveredText ? 0 : 10,
+              }}
+              transition={{
+                opacity: { duration: 0.2 },
+                scale: { type: 'spring', stiffness: 500, damping: 15 },
+                x: { type: 'spring', stiffness: 400, damping: 20 },
+              }}
+              className='bg-neutral px-3 py-1 rounded-md text-sm text-neutral-content'
+            >
+              {hoveredText}
+            </motion.div>
+
+            {/* icon */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: isHovering ? 1 : 0.3,
+                scale: isHovering ? 1 : 0.8,
+              }}
+              transition={{
+                opacity: { duration: 0.3 },
+                scale: { type: 'spring', stiffness: 400, damping: 25 },
+              }}
+            >
+              <Image
+                src='/diamond-icon-dark-export.svg'
+                alt=''
+                width={40}
+                height={40}
+                className='w-5 h-5'
+              />
+            </motion.div>
           </motion.div>
 
           <div className='space-y-8'>
@@ -137,6 +182,8 @@ export default function Home() {
                         href='https://github.com/conjureme/tyster.io'
                         target='_blank'
                         className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                        onMouseEnter={() => handleLinkHover('tyster.io')}
+                        onMouseLeave={handleLinkLeave}
                       >
                         tyster.io
                       </Link>
@@ -163,6 +210,8 @@ export default function Home() {
                         href='https://github.com/conjureme/moemoe'
                         target='_blank'
                         className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                        onMouseEnter={() => handleLinkHover('moemoe')}
+                        onMouseLeave={handleLinkLeave}
                       >
                         moemoe
                       </Link>
@@ -190,6 +239,8 @@ export default function Home() {
                       <Link
                         href='/anti-domo'
                         className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                        onMouseEnter={() => handleLinkHover('anti-domo')}
+                        onMouseLeave={handleLinkLeave}
                       >
                         anti-domo
                       </Link>
@@ -217,6 +268,8 @@ export default function Home() {
                         href='https://github.com/conjureme/next-blog'
                         target='_blank'
                         className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                        onMouseEnter={() => handleLinkHover('next-blog')}
+                        onMouseLeave={handleLinkLeave}
                       >
                         next-blog
                       </Link>
@@ -268,6 +321,8 @@ export default function Home() {
                       href='https://github.com/conjureme'
                       target='_blank'
                       className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                      onMouseEnter={() => handleLinkHover('github')}
+                      onMouseLeave={handleLinkLeave}
                     >
                       github
                     </Link>
@@ -289,6 +344,8 @@ export default function Home() {
                       href='https://x.com/caniacsauce'
                       target='_blank'
                       className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                      onMouseEnter={() => handleLinkHover('twitter')}
+                      onMouseLeave={handleLinkLeave}
                     >
                       twitter
                     </Link>
@@ -310,6 +367,8 @@ export default function Home() {
                       href='https://discord.gg/rn9j69ApJQ'
                       target='_blank'
                       className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                      onMouseEnter={() => handleLinkHover('discord')}
+                      onMouseLeave={handleLinkLeave}
                     >
                       discord server
                     </Link>
@@ -331,6 +390,8 @@ export default function Home() {
                       href='https://steamcommunity.com/id/tyster1/'
                       target='_blank'
                       className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                      onMouseEnter={() => handleLinkHover('steam')}
+                      onMouseLeave={handleLinkLeave}
                     >
                       steam profile
                     </Link>
@@ -352,6 +413,8 @@ export default function Home() {
                       href='https://www.youtube.com/@tyster_'
                       target='_blank'
                       className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                      onMouseEnter={() => handleLinkHover('youtube')}
+                      onMouseLeave={handleLinkLeave}
                     >
                       youtube
                     </Link>
@@ -373,6 +436,8 @@ export default function Home() {
                       href='https://twitch.tv/tyster6'
                       target='_blank'
                       className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
+                      onMouseEnter={() => handleLinkHover('twitch')}
+                      onMouseLeave={handleLinkLeave}
                     >
                       twitch
                     </Link>
