@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Work_Sans, Space_Grotesk } from 'next/font/google';
 
 export const metadata: Metadata = {
-  title: 'tyster.io',
+  title: 'home - tyster.io',
   description: "tyler's very unprofessional and silly personal website.",
   keywords: [
     'tyster',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'wannabe coder',
   ],
   openGraph: {
-    title: 'tyster.io',
+    title: 'home - tyster.io',
     siteName: 'tyster.io',
     description:
       'personal website of tyster- an out of touch coder and art enthusiast, filled with his projects and ugly art',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@caniacsauce',
-    title: "tyster.io - tyler's personal website",
+    title: 'home - tyster.io',
     description:
       'personal website of tyster- an out of touch coder and art enthusiast, filled with his projects and ugly art',
   },
@@ -48,6 +48,16 @@ const montserrat = Montserrat({
   subsets: ['latin'],
 });
 
+const workSans = Work_Sans({
+  subsets: ['latin'],
+  variable: '--font-workSans',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-spaceGrotesk',
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full'>
       <body
-        className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className}`}
+        className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className} ${workSans.variable} ${spaceGrotesk.variable}`}
       >
         <div className='h-full w-full'>{children}</div>
       </body>
