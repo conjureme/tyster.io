@@ -37,7 +37,8 @@ const linkIconAnim = {
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
-  const [hoveredText, setHoveredText] = useState('');
+  const [hoveredText, setHoveredText] = useState('hi there!');
+  const [isHoveringLink, setIsHoveringLink] = useState(false);
   const mouseY = useMotionValue(0);
   const mouseX = useMotionValue(0);
 
@@ -82,18 +83,32 @@ export default function Home() {
     if (!isHovering) {
       mouseY.set(0);
       mouseX.set(0);
+      const timeout = setTimeout(() => {
+        if (!isHoveringLink) {
+          setHoveredText('hi there!');
+        }
+      }, 50);
+      return () => clearTimeout(timeout);
     } else {
       mouseX.set(-50);
     }
-  }, [isHovering, mouseY, mouseX]);
+  }, [isHovering, isHoveringLink, mouseY, mouseX]);
 
   const handleLinkHover = (text: string) => {
     const displayText = hoverTextMap[text.toLowerCase()] || text;
     setHoveredText(displayText);
+    setIsHoveringLink(true);
   };
 
   const handleLinkLeave = () => {
-    setHoveredText('');
+    setIsHoveringLink(false);
+    if (!isHovering) {
+      setTimeout(() => {
+        if (!isHoveringLink) {
+          setHoveredText('hi there!');
+        }
+      }, 50);
+    }
   };
 
   return (
@@ -110,20 +125,20 @@ export default function Home() {
             className='hidden md:flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none'
             style={{ y: diamondY, x: diamondX }}
           >
-            {/* text box */}
+            {/* text box - always rendered */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 10 }}
               animate={{
-                opacity: hoveredText ? 1 : 0,
-                scale: hoveredText ? 1 : 0.8,
-                x: hoveredText ? 0 : 10,
+                opacity: isHovering ? 1 : 0.3,
+                scale: isHovering ? 1 : 0.8,
+                x: isHovering ? 0 : 10,
               }}
               transition={{
-                opacity: { duration: 0.2 },
+                opacity: { duration: 0.3 },
                 scale: { type: 'spring', stiffness: 500, damping: 15 },
                 x: { type: 'spring', stiffness: 400, damping: 20 },
               }}
-              className='bg-neutral px-3 py-1 rounded-md text-sm text-neutral-content'
+              className='bg-neutral px-3 py-1 rounded-md text-sm text-neutral-content whitespace-nowrap'
             >
               {hoveredText}
             </motion.div>
