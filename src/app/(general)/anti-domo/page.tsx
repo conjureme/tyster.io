@@ -22,6 +22,50 @@ export default function AntiDomo() {
           </p>
         </div>
 
+        <div className='card bg-red-50 border border-red-200 mb-8'>
+          <div className='card-body'>
+            <h2 className='card-title text-2xl mb-4 flex items-center gap-2 text-red-700'>
+              <Icon icon='mdi:alert-circle' className='text-red-500' />
+              bot discontinued!
+            </h2>
+            <ul className='space-y-2 text-red-700'>
+              <li className='flex items-start gap-2'>
+                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
+                <span>
+                  due to security risks involved with using this bot, it will be
+                  removed from active servers and shut down!
+                </span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
+                <span>
+                  spammers and other bad actors are able to utilize the{' '}
+                  <span>use external apps</span> permission the bot requires
+                  enabled to abuse your server
+                </span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
+                <span>
+                  this is a risk that simply outweighs the benefit from using
+                  this bot. i HIGHLY recommend disabling the use external apps
+                  permission on your server and default roles and instead focus
+                  on advocating against AI usage.
+                </span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
+                <span>
+                  feel free to derive the logic and come up with your own
+                  solutions if possible! i just won&apos;t be providing hosting,
+                  support, or any updates for it. perhaps i&apos;ll (or someone
+                  smarter than me) will come up with something better.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div className='grid md:grid-cols-2 gap-8 mb-12'>
           {/* what it does */}
           <div className='card bg-base-100 shadow-lg border border-gray-200'>
@@ -87,48 +131,13 @@ export default function AntiDomo() {
           </div>
         </div>
 
-        {/* important notes */}
-        <div className='card bg-red-50 border border-red-200 mb-8'>
-          <div className='card-body'>
-            <h2 className='card-title text-2xl mb-4 flex items-center gap-2 text-red-700'>
-              <Icon icon='mdi:alert-circle' className='text-red-500' />
-              important setup notes
-            </h2>
-            <ul className='space-y-2 text-red-700'>
-              <li className='flex items-start gap-2'>
-                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
-                <span>
-                  &apos;use external apps&apos; permission must be enabled in
-                  your server
-                </span>
-              </li>
-              <li className='flex items-start gap-2'>
-                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
-                <span>
-                  the bot must have a hoisted role above other member roles
-                </span>
-              </li>
-              <li className='flex items-start gap-2'>
-                <Icon icon='mdi:arrow-right' className='mt-1 flex-shrink-0' />
-                <span>
-                  bot needs read messages, manage messages, and ban member
-                  permissions
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
         {/* action buttons */}
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-          <Link
-            href='https://discord.com/oauth2/authorize?client_id=1374962695698386985'
-            target='_blank'
-            className='btn bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-200 flex items-center gap-2'
-          >
+          <div className='btn bg-gray-400 text-gray-600 px-8 py-3 text-lg font-semibold rounded-lg cursor-not-allowed flex items-center gap-2 opacity-60'>
             <Icon icon='simple-icons:discord' width={24} height={24} />
-            invite bot to server
-          </Link>
+            <span className='line-through'>invite bot to server</span>
+            <span className='text-sm font-normal'>(discontinued)</span>
+          </div>
 
           <Link
             href='https://github.com/conjureme/anti-domo'
