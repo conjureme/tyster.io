@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { RootProvider } from 'fumadocs-ui/provider';
 import './globals.css';
 
 import { Montserrat, Work_Sans, Space_Grotesk } from 'next/font/google';
@@ -68,7 +69,9 @@ export default function RootLayout({
       <body
         className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className} ${workSans.variable} ${spaceGrotesk.variable}`}
       >
-        <div className='h-full w-full'>{children}</div>
+        <div className='h-full w-full'>
+          <RootProvider>{children}</RootProvider>
+        </div>
       </body>
     </html>
   );

@@ -15,7 +15,7 @@ export default function AntiDomo() {
       <div className='container mx-auto px-4 py-8 max-w-4xl mt-16 md:mt-0'>
         <div className='text-center mb-12'>
           <h1 className='text-4xl md:text-5xl font-bold mb-4'>
-            <span className='gradient-flow'>anti-domo</span>
+            <span className='text-base-content'>anti-domo</span>
           </h1>
           <p className='text-xl text-gray-600 mb-8'>
             a discord bot that automatically bans users who use domoAI
@@ -68,7 +68,7 @@ export default function AntiDomo() {
 
         <div className='grid md:grid-cols-2 gap-8 mb-12'>
           {/* what it does */}
-          <div className='card bg-base-100 shadow-lg border border-gray-200'>
+          <div className='card bg-base-100 shadow-lg border border-gray-200 text-base-content'>
             <div className='card-body'>
               <h2 className='card-title text-2xl mb-4 flex items-center gap-2'>
                 <Icon icon='mdi:shield-check' className='text-green-500' />
@@ -108,7 +108,7 @@ export default function AntiDomo() {
           </div>
 
           {/* why it exists */}
-          <div className='card bg-base-100 shadow-lg border border-gray-200'>
+          <div className='card bg-base-100 shadow-lg border border-gray-200 text-base-content'>
             <div className='card-body'>
               <h2 className='card-title text-2xl mb-4 flex items-center gap-2'>
                 <Icon icon='mdi:lightbulb' className='text-yellow-500' />
