@@ -1,5 +1,8 @@
-import { defineDocs } from 'fumadocs-mdx/config';
+// source.config.ts
+import { defineDocs } from "fumadocs-mdx/config";
 var docs = defineDocs({
-  dir: 'content/moemoe/docs',
+  dir: "content/moemoe/docs"
 });
-export { docs };
+export {
+  docs
+};

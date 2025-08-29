@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full'>
       <body
-        className={`min-h-screen h-full m-0 flex justify-center bg-white ${montserrat.className} ${workSans.variable} ${spaceGrotesk.variable}`}
+        className={`min-h-screen h-full m-0 flex justify-center ${montserrat.className} ${workSans.variable} ${spaceGrotesk.variable}`}
       >
         <div className='h-full w-full'>
           <RootProvider>{children}</RootProvider>
