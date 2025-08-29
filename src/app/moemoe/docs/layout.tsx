@@ -5,8 +5,23 @@ import type { ReactNode } from 'react';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={source.pageTree} {...baseOptions()}>
-      {children}
-    </DocsLayout>
+    <div
+      className='fumadocs-layout'
+      style={
+        {
+          '--color-base-content': 'initial',
+          '--color-base-100': 'initial',
+          '--color-base-200': 'initial',
+          '--color-base-300': 'initial',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+        } as React.CSSProperties
+      }
+    >
+      <DocsLayout tree={source.pageTree} {...baseOptions()}>
+        {children}
+      </DocsLayout>
+    </div>
   );
 }
