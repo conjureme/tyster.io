@@ -23,7 +23,6 @@ export default function Footer() {
         <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
           <div className='md:col-span-1'>
             <div className='w-10 h-10 bg-primary rounded-lg flex items-center justify-center'>
-              {/* placeholder logo */}
               <Link href='/' className='flex items-center justify-center'>
                 <div className='w-10 h-10 rounded-lg flex items-center justify-center'>
                   <Image
@@ -51,7 +50,7 @@ export default function Footer() {
                   home
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href='#'
                   className={`text-sm transition-colors duration-200 ${
@@ -86,7 +85,7 @@ export default function Footer() {
                 >
                   about
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

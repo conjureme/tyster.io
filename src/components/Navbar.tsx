@@ -47,7 +47,12 @@ export default function Navbar() {
                 className='p-2 rounded-full hover:bg-base-200 transition-colors'
                 aria-label='Close navigation menu'
               >
-                <Icon icon='material-symbols:close' width={28} height={28} />
+                <Icon
+                  icon='material-symbols:close'
+                  className='text-base-content'
+                  width={28}
+                  height={28}
+                />
               </button>
             </div>
 
@@ -66,7 +71,7 @@ export default function Navbar() {
                     <span>home</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href='#'
                     onClick={closeDrawer}
@@ -104,7 +109,7 @@ export default function Navbar() {
                   >
                     <span>about</span>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>
@@ -147,7 +152,7 @@ export default function Navbar() {
                 }`}
               ></span>
             </Link>
-            <Link
+            {/* <Link
               href='#'
               className={`relative py-2 transition-colors duration-200 font-medium group ${
                 isActiveLink('/shop')
@@ -197,7 +202,7 @@ export default function Navbar() {
                     : 'scale-x-0 group-hover:scale-x-100'
                 }`}
               ></span>
-            </Link>
+            </Link> */}
           </div>
 
           {/* mobile menu button */}
@@ -207,7 +212,12 @@ export default function Navbar() {
               className='p-2 rounded-lg hover:bg-base-200 transition-colors duration-200'
               aria-label='Open navigation menu'
             >
-              <Icon icon='material-symbols:menu' width={28} height={28} />
+              <Icon
+                icon='material-symbols:menu'
+                className='text-base-content'
+                width={28}
+                height={28}
+              />
             </button>
           </div>
         </div>
