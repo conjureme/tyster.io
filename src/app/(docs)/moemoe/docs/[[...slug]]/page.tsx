@@ -41,7 +41,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (!page) notFound();
 
   return {
-    title: page.data.title,
+    title: `${page.data.title} - moemoe docs`,
     description: page.data.description,
   };
 }

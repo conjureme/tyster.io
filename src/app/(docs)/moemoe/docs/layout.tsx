@@ -19,7 +19,19 @@ export default function Layout({ children }: { children: ReactNode }) {
         } as React.CSSProperties
       }
     >
-      <DocsLayout tree={source.pageTree} {...baseOptions()}>
+      <DocsLayout
+        tree={source.pageTree}
+        {...baseOptions()}
+        sidebar={{
+          tabs: [
+            {
+              title: 'moemoe-discord',
+              description: "moemoe's discord docs",
+              url: '/moemoe/docs/discord',
+            },
+          ],
+        }}
+      >
         {children}
       </DocsLayout>
     </div>
