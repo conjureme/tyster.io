@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           tabs: [
             {
               title: 'moemoe-discord',
-              description: "moemoe's discord docs",
+              description: 'docs for the moemoe discord module',
               url: '/moemoe/docs/discord',
             },
           ],

@@ -1,12 +1,96 @@
 ---
-title: moemoe discord docs
-description: a super awesome discord bot with AI integration, function calling, and additional configs for power users.
+title: bot overview !
+description: introducing moemoe! a discord bot with AI integration, function calling, and a ton of other cool stuff!
 ---
 
-## hiya welcome
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Callout } from 'fumadocs-ui/components/callout';
 
-cool discord bot
+## welcome to [moemoe-discord](https://github.com/conjureme/moemoe-discord)
+
+moemoe is an open-source Discord bot with an incredible amount of functionality and extensible utility! with AI integration, moemoe is designed to feel like a real member of your server through autonomous functions and natural conversation.
+
+<Cards>
+<Card title='moemoe discord!' href='https://discord.gg/rn9j69ApJQ' external>
+  get help with adding, implementing, or chatting with moemoe here!
+</Card>
+
+<Card
+  title='view her code!'
+  href='https://github.com/conjureme/moemoe-discord'
+  external
+>
+  links to github
+</Card>
+</Cards>
+
+## key features
+
+### core functionality
+
+- **AI integration** - works with local LLM models ([koboldcpp](https://github.com/LostRuins/koboldcpp)) or provider API
+- **memory** - conversations are persistent with configurable retention (guild-wide or channel specific)
+- **function calling** - let's the AI perform actions autonomously and even run its own slash commands
+
+### discord features
+
+- **economy** - guild-specific currency with customizable rewards
+- **autoresponders** - create dynamic responses with placeholder support and arguments
+- **gambling** - blackjack, coinflip, roulette, and ride the bus!
+- **voice support** - join calls and converse with users
+
+### customization
+
+- **per-server settings** - each server can have its own configuration
+- **greetings** - welcome new members with messages that support placeholders and embeds
+- **boost messages** - thank your server boosters automatically upon boost
+
+## who is moemoe for?
+
+the moemoe-discord bot is perfect for:
+
+1. **community servers** wanting wanting to bring their own mascot to life
+2. **developers** interested in customizing and developing their own bot
+3. **anyone** wanting their own bot to feel more responsive
+
+## what moemoe isn't
+
+moemoe is capable of doing lots of awesome things, but in order to set proper expectations:
+
+- she is **not a moderation bot** - while she has some moderation capability, it is not the focus
+- she is **not a music bot** - some cool voice features exist but not full on music streaming
+- she is **not an art generator** - this will never, ever be added. matter of fact, if you ask moemoe to generate art, she'll likely yell at you
+- she is also **not plug-and-play** - unless you invite my version of moemoe, this bot will require some technical setup, espcially for the AI backend and voice.
+
+## for users
+
+<Callout type='info'>
+  production-ready moemoe is still in the works! she is still prone to many bugs
+  and is awaiting some stress testing
+</Callout>
+
+## for developers
 
 ### getting started
 
-yadda yadda
+ready to bring moemoe or your own character to your server? here's what you'll need:
+
+- **node.js 18+** and npm installed
+- **your discord bot token** from the [discord dev portal](https://discord.com/developers/applications)
+- **AI backend of your choice** - either:
+  - a local model with koboldcpp or ooba (recommended)
+  - API access to any cloud provider (coming soon)
+
+the setup process is relatively straightfoward if you have your AI backend already in place, but it does require some technical knowledge. fear not! i've got a [quick start guide]() that will walk you through everything.
+
+## community & support
+
+while moemoe is still in active development, i'd love for you to join our community:
+
+- **moemoe's server** - https://discord.gg/rn9j69ApJQ
+- **github** - to [contribute](https://github.com/conjureme/moemoe-discord) or report issues
+- **feedback** - all feedback is welcome and greatly appreciated, even if you aren't technical. feel free to DM [caniacsauce](https://discord.com/users/860733331532808213) on discord, leave a message in the server, or submit an issue on moemoe's repo.
+
+---
+
+_moemoe is a passion project under active development. she's rough around the edges but getting continuous improvements!_

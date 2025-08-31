@@ -1,5 +1,6 @@
 {
   "title": "moemoe discord docs",
   "description": "docs for the moemoe discord module",
-  "root": true
+  "root": true,
+  "pages": ["---introductions---", "index"]
 }
