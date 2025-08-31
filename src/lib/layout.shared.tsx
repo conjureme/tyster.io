@@ -5,5 +5,6 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: 'tyster.io',
     },
+    disableThemeSwitch: true,
   };
 }
