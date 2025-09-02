@@ -1,0 +1,225 @@
+---
+title: installation
+description: how to get your own moemoe up and running
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+
+<Callout type='warn'>
+  this page is for those interested in running their own installation of moemoe.
+</Callout>
+
+## prerequisites
+
+before diving in, ensure you have the following:
+
+- **node.js 18+** and npm installed
+- **git** for cloning the repository
+- **Discord bot token** from the [Discord developer portal](https://discord.com/developers/applications)
+- **AI backend** with an API
+
+## AI backend
+
+moemoe requires some sort of AI backend to function and you've plenty of options available:
+
+### for local models (recommended)
+
+running a local LLM gives you full control and no API costs, but does require a somewhat beefy PC depending on the model's size. i would recommend [koboldcpp](https://github.com/LostRuins/koboldcpp) for how awesome it is.
+
+<Callout type='info'>
+  a mid-tier gaming PC may be able to run 7-13B quantizized models. larger models will require more resources.
+
+as of writing, moemoe is running on [Mistral-Small-24b-Instruct-2501](https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501). bear in mind, smaller models will struggle with remembering rules and function syntax.
+
+</Callout>
+
+quick KoboldCPP setup:
+
+1. download [KoboldCPP](https://github.com/LostRuins/koboldcpp)
+2. grab a model that will fit on your PC
+3. run KoboldCPP and take note of the URL
+   - by default this will be localhost:5001
+
+### cloud providers
+
+openai and other provider support is coming soon. for now, local models are the way to go.
+
+## bot installation
+
+<Steps>
+<Step>
+
+### clone the repository
+
+```bash
+git clone https://github.com/conjureme/moemoe-discord.git
+cd moemoe-discord
+```
+
+</Step>
+<Step>
+
+### install dependencies
+
+```bash
+npm install
+```
+
+this will install all required packages including discord.js
+
+</Step>
+<Step>
+
+### configure environment
+
+copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+open `.env` and add your variables:
+
+```
+DISCORD_TOKEN=your_bot_token_here
+CLIENT_ID=client_id_here
+API_PROVIDER=koboldcpp
+```
+
+</Step>
+<Step>
+
+### configure AI settings
+
+edit `config/ai.json` and adjust sampler settings to your liking:
+
+```json
+{
+  "maxTokens": 500,
+  "temperature": 1.0
+}
+```
+
+<Callout>
+  currently a very unpleasant method of adjusting settings—a UI is in the works.
+</Callout>
+
+</Step>
+<Step>
+
+### customize moemoe's personality
+
+edit `config/bot.json` to define moemoe's personality or make your own persona:
+
+```json
+{
+  "name": "moemoe",
+  "description": "a friendly and helpful discord bot",
+  "data": {
+    "system_prompt": "you are moemoe, a helpful discord bot...",
+    "first_mes": "hiya! i'm moemoe!",
+    "mes_example": "example dialogue here"
+  }
+}
+```
+
+this entire file is structured as a v2 Tavern Character Card. you can copy and paste characters if you prefer.
+
+</Step>
+<Step>
+
+### deploy commands
+
+before first run, deploy the slash commands:
+
+```bash
+npm run deploy
+```
+
+</Step>
+<Step>
+
+### start the bot
+
+```bash
+npm run dev
+```
+
+</Step>
+</Steps>
+
+## inviting moemoe
+
+once running, you'll need to invite moemoe to your server:
+
+1. go to the [discord developer portal](https://discord.com/developers/applications)
+2. select your application
+3. navigate to OAuth2 > URL Generator
+4. select these scopes:
+   - `bot`
+   - `applications.commands`
+5. select perms you want or ensure bot has proper roles
+6. copy the generated URL and open it to invite moemoe
+
+## bot in your server, try these:
+
+- [ ] try `/ping` to verify bot and commands are working
+- [ ] test AI interaction with `@moemoe hello!`
+- [ ] test AI responses to ensure it's acting correctly
+
+## troubleshooting
+
+### moemoe won't respond
+
+- check that your AI backend is running and accessible
+- verify the APIs in `.env` are correct
+- ensure moemoe has permission to read and send messages
+- enable debug mode and check terminal output for errors
+
+### commands aren't showing
+
+- run `npm run deploy` or `npm run deploy:global` again
+- refresh discord with CTRL + R and retry
+- try deploying to your specific guild instead of globally
+
+### AI responses are weird
+
+- ensure `config/ai.json` is using the right instruction format and sampler settings
+- try lowering your temperature
+
+### voice support
+
+<Callout type='info'>
+  this is another WIP. voice functionality is currently hardcoded, but you can
+  implement it by setting up and following the following steps.
+</Callout>
+
+for voice features, you'll also need:
+
+- @discordjs/voice
+- sodium-native
+- [rvc-python](https://github.com/daswer123/rvc-python)
+- [KokoroTTS API](https://github.com/remsky/Kokoro-FastAPI)
+
+### whisper transcription
+
+koboldcpp supports running a whisper model in tandem, you can get one from here:
+
+- https://huggingface.co/koboldcpp/whisper/tree/main
+
+## next steps
+
+now that moemoe is running:
+
+- configure her personality to match your server or desired character
+- explore [available commands](/moemoe/docs/discord/commands)
+- set up your [economy system](/moemoe/docs/discord/economy)
+- create [autoresponders](/moemoe/docs/discord/autoresponders)
+
+---
+
+<Callout type='warning'>
+  always remember to keep your bot token and API keys secret! never commit them
+  to version control or hand them out.
+</Callout>
