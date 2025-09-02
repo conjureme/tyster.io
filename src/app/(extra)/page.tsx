@@ -55,8 +55,6 @@ export default function Home() {
     twitch: 'i stream games!',
     'tyster.io': 'thank you for visiting!',
     moemoe: 'the silliest discord bot',
-    'anti-domo': 'no domos allowed',
-    'next-blog': 'this was a triumph',
   };
 
   useEffect(() => {
@@ -167,10 +165,10 @@ export default function Home() {
 
           <div className='space-y-8'>
             <section>
-              <h1 className='text-2xl font-bold font-workSans text-base-content mb-3'>
+              <h1 className='text-3xl font-bold font-workSans text-base-content mb-3'>
                 hiya, i&apos;m tyler!
               </h1>
-              <p className='text-base-content leading-relaxed text-sm max-w-2xl'>
+              <p className='text-base-content leading-relaxed text-md max-w-2xl'>
                 here, you&apos;ll find a collection of some of my hobby
                 projects, commission info, and an assortment of other things.
               </p>
@@ -178,8 +176,10 @@ export default function Home() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-12 font-spaceGrotesk'>
               <section>
-                <h2 className='text-lg text-base-content mb-4'>projects</h2>
-                <div className='space-y-2 text-sm'>
+                <h2 className='text-2xl text-base-content mb-4'>
+                  awesome stuffs
+                </h2>
+                <div className='space-y-2 text-md'>
                   <motion.div
                     className='flex items-start gap-2 group'
                     whileHover='hover'
@@ -203,7 +203,7 @@ export default function Home() {
                         tyster.io
                       </Link>
                       <span className='text-base-content/70 ml-1'>
-                        — this website
+                        — view this site&apos;s source code
                       </span>
                     </div>
                   </motion.div>
@@ -222,8 +222,7 @@ export default function Home() {
                     </motion.span>
                     <div>
                       <Link
-                        href='https://github.com/conjureme/moemoe'
-                        target='_blank'
+                        href='/moemoe'
                         className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
                         onMouseEnter={() => handleLinkHover('moemoe')}
                         onMouseLeave={handleLinkLeave}
@@ -231,87 +230,9 @@ export default function Home() {
                         moemoe
                       </Link>
                       <span className='text-base-content/70 ml-1'>
-                        — an incredibly awesome discord bot with AI integration,
-                        function calling, and a ton of other cool stuff! built
-                        with discord.js
+                        — super stacked discord bot with AI integration,
+                        autonomous actions, autoresponder, and more
                       </span>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className='flex items-start gap-2 group'
-                    whileHover='hover'
-                    variants={parentAnim}
-                    initial='initial'
-                  >
-                    <motion.span
-                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
-                      variants={linkIconAnim}
-                    >
-                      ◇
-                    </motion.span>
-                    <div>
-                      <Link
-                        href='/anti-domo'
-                        className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
-                        onMouseEnter={() => handleLinkHover('anti-domo')}
-                        onMouseLeave={handleLinkLeave}
-                      >
-                        anti-domo
-                      </Link>
-                      <span className='text-base-content/70 ml-1'>
-                        — a crude discord bot that automatically bans anyone who
-                        uses the domoAI application. that&apos;s literally it.
-                      </span>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className='flex items-start gap-2 group'
-                    whileHover='hover'
-                    variants={parentAnim}
-                    initial='initial'
-                  >
-                    <motion.span
-                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
-                      variants={linkIconAnim}
-                    >
-                      ◇
-                    </motion.span>
-                    <div>
-                      <Link
-                        href='https://github.com/conjureme/next-blog'
-                        target='_blank'
-                        className='text-base-content hover:text-primary transition-colors duration-300 underline hover:no-underline'
-                        onMouseEnter={() => handleLinkHover('next-blog')}
-                        onMouseLeave={handleLinkLeave}
-                      >
-                        next-blog
-                      </Link>
-                      <span className='text-base-content/70 ml-1'>
-                        — aperture science themed blog site built with next.js
-                        and supabase
-                      </span>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className='flex items-start gap-2 group'
-                    whileHover='hover'
-                    variants={parentAnim}
-                    initial='initial'
-                  >
-                    <motion.span
-                      className='text-primary transition-all duration-300 group-hover:text-primary-focus'
-                      variants={linkIconAnim}
-                    >
-                      ◇
-                    </motion.span>
-                    <div>
-                      <span className='text-base-content/50'>
-                        and many more to come!
-                      </span>
-                      <span className='text-base-content/70 ml-1'></span>
                     </div>
                   </motion.div>
                 </div>
@@ -319,7 +240,7 @@ export default function Home() {
 
               <section>
                 <h2 className='text-lg text-base-content mb-4'>links</h2>
-                <div className='space-y-2 text-sm'>
+                <div className='space-y-2 text-md'>
                   <motion.div
                     className='flex items-start gap-2 group'
                     whileHover='hover'

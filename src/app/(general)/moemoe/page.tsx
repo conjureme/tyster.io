@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 export default function MoemoeDocsLanding() {
   return (
-    <div className='min-h-screen flex items-center bg-white'>
+    <div className='min-h-screen flex items-center bg-base-100'>
       <div className='container mx-auto px-4 py-8 max-w-4xl mt-16 md:mt-0'>
         <div className='text-center mb-12'>
           <h1 className='text-4xl md:text-5xl font-bold mb-4'>
-            <span className='text-base-content'>moemoe documentation</span>
+            <span className='text-base-content'>moemoe docs</span>
           </h1>
           <p className='text-xl text-gray-600 mb-8'>
             explore documentation for moemoe
@@ -25,7 +25,7 @@ export default function MoemoeDocsLanding() {
           {/* discord bot module */}
           <Link
             href='/moemoe/docs/discord'
-            className='card shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-200 group'
+            className='card shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-200 group bg-white/20'
           >
             <div className='card-body'>
               <h2 className='card-title text-2xl text-base-content mb-4 flex items-center gap-2 group-hover:text-primary transition-colors'>
@@ -60,13 +60,25 @@ export default function MoemoeDocsLanding() {
           </div>
         </div>
 
-        <div className='text-center'>
-          <Link
-            href='/'
-            className='text-gray-600 hover:text-gray-800 underline text-sm'
-          >
-            ← back to home
-          </Link>
+        <div className='space-y-2'>
+          <div className='text-center'>
+            <Link
+              href='https://github.com/conjureme/moemoe-discord'
+              target='_blank'
+              className='text-gray-600 hover:text-gray-800 underline text-sm'
+            >
+              view repo on github
+            </Link>
+          </div>
+
+          <div className='text-center'>
+            <Link
+              href='/'
+              className='text-gray-600 hover:text-gray-800 underline text-sm'
+            >
+              ← back to home
+            </Link>
+          </div>
         </div>
       </div>
     </div>
