@@ -84,10 +84,6 @@ export default function LorebookEditor() {
   }>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [textareaRows, setTextareaRows] = useState<{ [key: number]: number }>(
-    {}
-  );
-
   const addEntry = () => {
     const newEntry: LorebookEntry = {
       uid: entries.length,
@@ -129,7 +125,7 @@ export default function LorebookEditor() {
   const updateEntry = (
     index: number,
     field: keyof LorebookEntry,
-    value: any
+    value: LorebookEntry[keyof LorebookEntry]
   ) => {
     const newEntries = [...entries];
     newEntries[index] = { ...newEntries[index], [field]: value };
@@ -212,7 +208,7 @@ export default function LorebookEditor() {
 
         setEntries(importedEntries);
         toast.success('lorebook imported successfully!');
-      } catch (error) {
+      } catch {
         toast.error('failed to import lorebook. please check the file format.');
       }
     };
@@ -255,7 +251,7 @@ export default function LorebookEditor() {
           </div>
         </div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 text-base-content'>
           {/* left side - editor */}
           <div className='space-y-4'>
             <div className='max-h-[75vh] overflow-y-auto space-y-4 pr-2'>
